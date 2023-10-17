@@ -29,9 +29,8 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove this reminder once you upload your README. 
+<img src='https://github.com/AvantiiM/ios101-project4-trivia-starter/blob/main/Trivia4.gif?raw=true' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-[Guide]](https://www.youtube.com/watch?v=GA92eKlYio4) .
 
 ## Notes
 
