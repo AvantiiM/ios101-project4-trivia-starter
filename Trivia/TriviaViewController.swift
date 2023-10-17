@@ -27,10 +27,23 @@ class TriviaViewController: UIViewController {
     addGradient()
     questionContainerView.layer.cornerRadius = 8.0
     // TODO: FETCH TRIVIA QUESTIONS HERE
+      TriviaQuestionService.fetchTriviaQuestions(numQuestions: 5) { [weak self] questions in
+        DispatchQueue.main.async {
+          self?.questions = questions
+          self?.updateQuestion(withQuestionIndex: 0)
+        }
+      }
   }
   
   private func updateQuestion(withQuestionIndex questionIndex: Int) {
     currentQuestionNumberLabel.text = "Question: \(questionIndex + 1)/\(questions.count)"
+    
+      guard questionIndex < questions.count else {
+          // Handle the case where the question index is out of bounds (e.g., end of the game).
+          showFinalScore()
+          return
+      }
+      
     let question = questions[questionIndex]
     questionLabel.text = question.question
     categoryLabel.text = question.category
@@ -90,6 +103,7 @@ class TriviaViewController: UIViewController {
     gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
     view.layer.insertSublayer(gradientLayer, at: 0)
   }
+
   
   @IBAction func didTapAnswerButton0(_ sender: UIButton) {
     updateToNextQuestion(answer: sender.titleLabel?.text ?? "")
